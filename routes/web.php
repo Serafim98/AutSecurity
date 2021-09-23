@@ -26,4 +26,7 @@ Route::resources([
     'cliente' => ClientesController::class
 ]);
 
+Route::get('cliente/{id}/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
+Route::get('/clientes/search', [ClientesController::class, 'search'])->name('cliente.search');
 require __DIR__.'/auth.php';
+

@@ -10,7 +10,7 @@ class FuncionariosController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        Gate::authorize("acesso-funcionario");
+
     }
     /**
      * Display a listing of the resource.
@@ -19,6 +19,7 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
+        Gate::authorize("acesso-funcionario");
         $funcionarios = Funcionario::orderBy('NomeCompleto')->paginate(5);
         return view('funcionarios.index', compact('funcionarios'));
     }
@@ -49,7 +50,7 @@ class FuncionariosController extends Controller
            return redirect()->
                     action([FuncionariosController::class, 'index'])->
                     with('sucesso', 'Registro salvo com sucesso!');
-        } catch (\Exception $e){   
+        } catch (\Exception $e){
             return redirect()->
                     action([FuncionariosController::class, 'index'])->
                     with('erro', 'Erro ao salvar o registro!');
@@ -96,7 +97,7 @@ class FuncionariosController extends Controller
             return redirect()->
                     action([FuncionariosController::class, 'index'])->
                     with('sucesso', 'Registro Alterado!');
-        } catch (\Exception $e){   
+        } catch (\Exception $e){
             return redirect()->
                     action([FuncionariosController::class, 'index'])->
                     with('erro', 'Não foi possível alterar o registro!');

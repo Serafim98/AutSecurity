@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeguradorasController;
 use App\Http\Controllers\FuncionariosController;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

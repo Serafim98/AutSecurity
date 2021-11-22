@@ -10,7 +10,7 @@ class SeguradorasController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        Gate::authorize("acesso-funcionario");
+
     }
     /**
      * Display a listing of the resource.
@@ -19,6 +19,7 @@ class SeguradorasController extends Controller
      */
     public function index()
     {
+        Gate::authorize("acesso-funcionario");
         $seguradoras = Seguradora::orderBy('Nome')->paginate(5);
         return view('seguradoras.index', compact('seguradoras'));
     }
@@ -48,7 +49,7 @@ class SeguradorasController extends Controller
            return redirect()->
                     action([SeguradorasController::class, 'index'])->
                     with('sucesso', 'Registro salvo com sucesso!');
-        } catch (\Exception $e){   
+        } catch (\Exception $e){
             return redirect()->
                     action([SeguradorasController::class, 'index'])->
                     with('erro', 'Erro ao salvar o registro!');
@@ -95,7 +96,7 @@ class SeguradorasController extends Controller
             return redirect()->
                     action([SeguradorasController::class, 'index'])->
                     with('sucesso', 'Registro Alterado!');
-        } catch (\Exception $e){   
+        } catch (\Exception $e){
             return redirect()->
                     action([SeguradorasController::class, 'index'])->
                     with('erro', 'Não foi possível alterar o registro!');
@@ -130,5 +131,5 @@ class SeguradorasController extends Controller
         $seguradoras = Seguradora::where($filtro, 'like', '%'.$pesquisa.'%')->orderBy($filtro)->paginate(5);
         return view('seguradoras.index', compact('seguradoras', 'filtro', 'pesquisa'));
     }
-    
+
 }

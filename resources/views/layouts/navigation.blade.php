@@ -12,18 +12,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if(\Illuminate\Support\Facades\Auth::user()->role == "funcionario")
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cliente.index')" :active="request()->routeIs('cliente.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+
                     <x-nav-link :href="route('seguradora.index')" :active="request()->routeIs('seguradora.index')">
                         {{ __('Seguradoras') }}
                     </x-nav-link>
                     <x-nav-link :href="route('funcionario.index')" :active="request()->routeIs('funcionario.index')">
                         {{ __('Funcionarios') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 

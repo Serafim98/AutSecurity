@@ -49,8 +49,9 @@
                 <div class="mt-4">
                     <label>Nível de usuário</label>
                     <select name="role" id="role">
-                        <option value="cliente">Cliente</option>
                         <option value="funcionario">Funcionário</option>
+                        <option value="cliente">Cliente</option>
+
                     </select>
                 </div>
             <div class="flex items-center justify-end mt-4">

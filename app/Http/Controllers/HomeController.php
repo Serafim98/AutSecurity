@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 
-
+use App\Models\Seguradora;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request){
-        return view('home.blade');
+    public function home(){
+        $seguradoras = Seguradora::all();
+        return view('welcome', compact('seguradoras'));
     }
 }

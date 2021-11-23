@@ -92,7 +92,7 @@ class SegurosController extends Controller
         try{
             $seguro = new Seguro();
             $dados = $request->only($seguro->getFillable());
-            Funcionario::whereId($id)->update($dados);
+            Seguro::whereId($id)->update($dados);
             return redirect()->
             action([SegurosController::class, 'index'])->
             with('sucesso', 'Registro Alterado!');
@@ -112,7 +112,7 @@ class SegurosController extends Controller
     public function destroy($id)
     {
         try{
-            Funcionario::destroy($id);
+            Seguro::destroy($id);
             return redirect()->action([SegurosController::class, 'index'])->with('sucesso', 'Registro Excluido');
         }
         catch(\Exception $e){

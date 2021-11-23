@@ -11,10 +11,14 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                         <div>
                             <x-label for="nome" :value="__('Nome')" />
-                            <x-input id="nome" class="block mt-1 w-full" type="text" name="nome" />
+                            <x-input id="nome" class="block mt-1 w-full" type="text"
+                                     name="nome" disabled
+                                     value="{{$seguro->nome}}"/>
 
                             <x-label for="preco" :value="__('Preço')" />
-                            <x-input id="preco" class="block mt-1 w-full" type="text" name="preco" />
+                            <x-input id="preco" class="block mt-1 w-full" type="text"
+                                     name="preco"
+                                     value="{{$seguro->preco}}"/>
 
                             <x-label for="seguradora" :value="__('Seguradora')" />
                             <x-input id="seguradora" class="block mt-1 w-full" type="text"

@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeguradorasController;
 use App\Http\Controllers\FuncionariosController;
+use App\Http\Controllers\SegurosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,8 @@ Route::get('/dashboard', function () {
 Route::resources([
     'cliente' => ClientesController::class,
     'seguradora' => SeguradorasController::class,
-    'funcionario' => FuncionariosController::class
+    'funcionario' => FuncionariosController::class,
+    'seguro' => SegurosController::class
 ]);
 
 Route::get('cliente/{id}/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
@@ -38,5 +40,8 @@ Route::get('seguradoras/search', [SeguradorasController::class, 'search'])->name
 
 Route::get('funcionario/{id}/delete', [FuncionariosController::class, 'delete'])->name('funcionario.delete');
 Route::get('funcionarios/search', [FuncionariosController::class, 'search'])->name('funcionario.search');
+
+Route::get('seguro/{id}/delete', [SegurosController::class, 'delete'])->name('seguro.delete');
+Route::get('seguros/search', [SegurosController::class, 'search'])->name('seguro.search');
 require __DIR__.'/auth.php';
 

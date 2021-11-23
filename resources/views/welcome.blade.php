@@ -46,10 +46,7 @@
                                     <div class="ml-4 text-lg leading-7 font-semibold">
                                         {{$s->Nome}}
                                     </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                        <a href="{{route('adicionar_seguradora', $s->id)}}">Adicionar ao carrinho</a>
-                                        <a></a>
-                                    </div>
+
                                 </div>
                             </div>
                         @endforeach

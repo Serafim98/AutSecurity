@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Seguro extends Model
 {
     use HasFactory;
+
+    protected  $fillable = ['nome', 'preco', 'seguradora_id'];
+
+    public function seguradora(){
+        return $this->belongsTo(Seguradora::class);
+    }
 }

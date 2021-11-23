@@ -15,6 +15,10 @@ class CreateSegurosTable extends Migration
     {
         Schema::create('seguros', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->float('preco');
+            $table->unsignedBigInteger('seguradora_id');
+            $table->foreign('seguradora_id')->references('id')->on('seguradoras');
             $table->timestamps();
         });
     }

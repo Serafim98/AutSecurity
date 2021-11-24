@@ -50,7 +50,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
+        if (Auth::user()->role == 'funcionario')
         return redirect(RouteServiceProvider::HOME);
+        else if (Auth::user()->role == 'cliente')
+            return redirect(('/areacliente'));
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeguradorasController;
 use App\Http\Controllers\FuncionariosController;
@@ -19,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home']);
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+    ->name('dashboard');
+
+Route::get('/areacliente', [ClienteController::class, 'areacliente'])
+    ->name('areacliente');
 
 
 Route::get('/dashboard', function () {
@@ -43,5 +51,16 @@ Route::get('funcionarios/search', [FuncionariosController::class, 'search'])->na
 
 Route::get('seguro/{id}/delete', [SegurosController::class, 'delete'])->name('seguro.delete');
 Route::get('seguros/search', [SegurosController::class, 'search'])->name('seguro.search');
+
+
+Route::get('/carrinho/add/{id}', [SegurosController::class, 'adicionar_produto'])
+    ->name('adicionar_produto');
+
+Route::get('/carrinho/remove/{id}', [SegurosController::class, 'remover_produto'])
+    ->name('remover_produto');
+
+Route::get('/carrinho/encerrar', [SegurosController::class, 'encerrar_venda'])
+    ->name('encerrar_venda');
+
 require __DIR__.'/auth.php';
 
